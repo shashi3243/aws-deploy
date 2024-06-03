@@ -2,10 +2,10 @@ module.exports = {
     apps: [{
       name: "app",
       script: "./src/app.js",
-      dev: {
+      env: {
         NODE_ENV: "dev"
       },
-      prod: {
+      env_production: {
         NODE_ENV: "prod",
       },
     }]
