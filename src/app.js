@@ -3,7 +3,7 @@ require("dotenv").config({path:`.env.${process.env.NODE_ENV}`})
 const stripe = require('stripe')(`${process.env.SECRET_KEY}`);
 
 const express = require("express")
-require("./db")
+// require("./db")
 const {Product,User} = require("./model")
 const app = express()
 const port = process.env.PORT
