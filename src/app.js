@@ -14,6 +14,12 @@ messsage:"Welcome to my apk"
 })
 })
 
+app.post('/github-webhook', (req, res) => {
+    // console.log("")
+    // Handle webhook payload
+    res.status(200).send('Webhook received');
+});
+
 app.post("/createProduct",async(req,res)=>{
     const data = await stripe.products.create({
         name: "indian product",
