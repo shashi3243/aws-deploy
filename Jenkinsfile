@@ -30,6 +30,7 @@ pipeline {
             steps {
                 script {
                     dir('/var/www/html/aws-deploy') {
+                        // Pull the latest code from the repository
                         sh 'git pull origin master'
                     }
                 }
@@ -41,6 +42,7 @@ pipeline {
                     dir('/var/www/html/aws-deploy') {
                         // Install npm dependencies
                         sh 'npm install'
+                        sh 'npm i -g pm2'
                     }
                 }
             }
@@ -49,10 +51,10 @@ pipeline {
             steps {
                 script {
                     dir('/var/www/html/aws-deploy') {
-
-                sh 'pm2 list'
-                // Start or reload PM2 processes
-                sh 'pm2 restart 0'
+                        // Restart the application using PM2
+                        sh 'pm2 list'
+                        sh 'pm2 start ecosystem.config.js --env production'
+                        sh 'pm2 list'
                     }
                 }
             }
@@ -74,5 +76,3 @@ pipeline {
         }
     }
 }
-
-
