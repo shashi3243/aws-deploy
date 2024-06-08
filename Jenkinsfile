@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
-     environment {
-        NODE_HOME = '/root/.nvm/versions/node/v20.14.0/bin'  // Path to your Node.js installation for root user
-        PM2_HOME = '/root/.nvm/versions/node/v20.14.0/bin/pm2'   // Path to your PM2 installation
-        PATH = "${NODE_HOME}:${PATH}" // Add npm path to the PATH environment variable
+      agent any
+
+    tools {
+        nodejs 'nodejs-lts'  // Use the name you configured in Jenkins
+    }
+
+    environment {
+        PATH = "${env.NODEJS_HOME}/bin:${PATH}"  // Add Node.js bin directory to PATH
     }
 
     stages {
@@ -40,6 +44,7 @@ pipeline {
                     dir('/var/www/html/aws-deploy') {
                         // Install npm dependencies
                         sh 'npm install'
+                        sh 'npm i -g pm2'
                     }
                 }
             }
