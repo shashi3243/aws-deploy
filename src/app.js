@@ -10,12 +10,6 @@ const port = process.env.PORT;
 
 app.get("/", (req, res) => {
   return res.status(200).json({
-    messsage: "Welcome to my apk",
-  });
-});
-
-app.get("/data", (req, res) => {
-  return res.status(200).json({
     messsage: "jenkins integrate successfully.",
   });
 });
