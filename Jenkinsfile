@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        // Define environment variables if needed
-        NODE_HOME = '/usr/local/bin'  // Path to your Node.js installation
+     environment {
+        NODE_HOME = '/root/.nvm/versions/node/v20.14.0/bin'  // Path to your Node.js installation for root user
         PM2_HOME = '/usr/local/bin'   // Path to your PM2 installation
+        PATH = "${NODE_HOME}:${PATH}" // Add npm path to the PATH environment variable
     }
 
     stages {
@@ -40,6 +40,7 @@ pipeline {
                     dir('/var/www/html/aws-deploy') {
                         // Install npm dependencies
                         sh 'npm install'
+                        sh 'npm i -g pm2'
                     }
                 }
             }
