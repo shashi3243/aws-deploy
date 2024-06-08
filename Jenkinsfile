@@ -52,7 +52,7 @@ pipeline {
 
 
                 // Start or reload PM2 processes
-                sh 'sudo pm2 restart 0'
+                sh 'pm2 restart 0'
                     }
                 }
             }
