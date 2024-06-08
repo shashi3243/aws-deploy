@@ -49,6 +49,18 @@ pipeline {
             steps {
                 script {
                     dir('/var/www/html/aws-deploy') {
+              def pm2ListOutput = sh(script: 'pm2 list', returnStdout: true).trim()
+
+                // If no PM2 processes are running, start a new one
+                if (pm2ListOutput.contains('│ app ')) {
+                    echo 'PM2 process already running, restarting...'
+                    sh 'pm2 restart app'
+                } else {
+                    echo 'No PM2 process found, starting a new one...'
+                    sh 'pm2 start ecosystem.config.js --env production'
+                }
+
+
                         // Restart the application using PM2
                         sh 'pm2 start ecosystem.config.js --env production'
                     }
