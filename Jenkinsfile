@@ -14,10 +14,10 @@ pipeline {
                 sh 'printenv'
             }
         }
-        stage('Go to /var/www/html Directory') {
+        stage('Go to /var/www/html/aws-deploy Directory') {
             steps {
                 script {
-                    dir('/var/www/html') {
+                    dir('/var/www/html/aws-deploy') {
                         // Ensure we are in the correct directory
                         sh 'pwd'
                     }
@@ -27,7 +27,7 @@ pipeline {
         stage('Pull Repository') {
             steps {
                 script {
-                    dir('/www/html/aws-deploy') {
+                    dir('/var/www/html/aws-deploy') {
                         // Pull the latest code from the repository
                         sh 'git pull origin master'
                     }
@@ -37,7 +37,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    dir('/www/html/aws-deploy') {
+                    dir('/var/www/html/aws-deploy') {
                         // Install npm dependencies
                         sh 'npm install'
                     }
@@ -47,7 +47,7 @@ pipeline {
         stage('Restart Application') {
             steps {
                 script {
-                    dir('/www/html/aws-deploy') {
+                    dir('/var/www/html/aws-deploy') {
                         // Restart the application using PM2
                         sh 'pm2 restart app'
                     }
