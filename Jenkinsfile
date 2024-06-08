@@ -50,7 +50,7 @@ pipeline {
                 script {
                     dir('/var/www/html/aws-deploy') {
 
-                sh 'pm2 status'
+                sh 'pm2 list'
                 // Start or reload PM2 processes
                 sh 'pm2 restart 0'
                     }
