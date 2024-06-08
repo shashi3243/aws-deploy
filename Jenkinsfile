@@ -31,6 +31,10 @@ pipeline {
                 script {
                     dir('/var/www/html/aws-deploy') {
                         // Pull the latest code from the repository
+                          // Discard local changes and sync with remote repository
+                        sh 'git reset --hard HEAD'
+                        sh 'git clean -df'
+                        sh 'git checkout .'
                         sh 'git pull origin master'
                     }
                 }
