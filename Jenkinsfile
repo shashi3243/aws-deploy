@@ -50,11 +50,9 @@ pipeline {
                 script {
                     dir('/var/www/html/aws-deploy') {
 
-                // Flush PM2 logs
-                sh 'pm2 flush'
 
                 // Start or reload PM2 processes
-                sh 'pm2 reload ecosystem.config.js --env production'
+                sh 'pm2 restart app'
                     }
                 }
             }
