@@ -3,7 +3,7 @@ pipeline {
 
      environment {
         NODE_HOME = '/root/.nvm/versions/node/v20.14.0/bin'  // Path to your Node.js installation for root user
-        PM2_HOME = '/usr/local/bin'   // Path to your PM2 installation
+        PM2_HOME = '/root/.nvm/versions/node/v20.14.0/bin/pm2'   // Path to your PM2 installation
         PATH = "${NODE_HOME}:${PATH}" // Add npm path to the PATH environment variable
     }
 
