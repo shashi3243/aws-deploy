@@ -46,7 +46,6 @@ pipeline {
                     dir('/var/www/html/aws-deploy') {
                         // Install npm dependencies
                         sh 'npm install'
-                        sh 'npm i -g pm2'
                     }
                 }
             }
