@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'nodejs-lts'  // Use the name you configured in Jenkins
+        nodejs 'NODEJS'  // Use the name you configured in Jenkins
     }
 
     environment {
