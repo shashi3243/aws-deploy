@@ -52,7 +52,7 @@ pipeline {
                 script {
                     dir('/var/www/html/aws-deploy') {
                         // Restart the application using PM2
-                        sh 'pm2 start ecosystem.config.js --env = production'
+                        sh 'pm2 start ecosystem.config.js --env production'
                     }
                 }
             }
