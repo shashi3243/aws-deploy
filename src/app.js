@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 app.get("/data", (req, res) => {
   return res.status(200).json({
-    messsage: "jenkins integrate successfully .",
+    messsage: "jenkins integrate successfully. ",
   });
 });
 
