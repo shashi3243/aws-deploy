@@ -50,11 +50,14 @@ pipeline {
             steps {
                 script {
                     dir('/var/www/html/aws-deploy') {
-                        // Restart the application using PM2
+                        // Set JENKINS_NODE_COOKIE to avoid process termination
+                         sh 'export JENKINS_NODE_COOKIE=dontKillMe'
+
+                // Restart the application using PM2
+                        sh 'pm2 restart ecosystem.config.js --env production'
+
+                // Check the list of running PM2 processes for verification
                         sh 'pm2 list'
-                        sh 'pm2 start ecosystem.config.js --env production'
-                        sh 'pm2 list'
-                    }
                 }
             }
         }
