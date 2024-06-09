@@ -32,6 +32,7 @@ pipeline {
                     dir('/var/www/html/aws-deploy') {
                         // Pull the latest code from the repository
                         sh 'git remote -v'
+                        sh 'git checkout .'
                         sh 'git pull origin master'
                     }
                 }
