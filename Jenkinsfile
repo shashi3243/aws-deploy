@@ -62,7 +62,7 @@ pipeline {
             }
         }
     }
-
+}
     post {
         always {
             // Actions that will run at the end of the pipeline, regardless of the result
@@ -77,5 +77,4 @@ pipeline {
             echo 'Pipeline failed'
         }
     }
-}
 }
