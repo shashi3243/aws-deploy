@@ -48,22 +48,25 @@ pipeline {
                 }
             }
         }
-        stage('Restart Application') {
+        stage('start Application') {
             steps {
                 script {
                     dir('/var/www/html/aws-deploy') {
                         // Set JENKINS_NODE_COOKIE to avoid process termination
-                         sh 'export JENKINS_NODE_COOKIE=dontKillMe'
-
-                // Restart the application using PM2
-                        sh 'pm2 restart ecosystem.config.js --env production'
-
-                // Check the list of running PM2 processes for verification
-                        sh 'pm2 list'
+                         sh 'BUILD_ID=dontKillMe PM2 start mywebsite.config.js'
+                         sh 'pm2 list'
                 }
             }
         }
     }
+
+        stage('Restart PM2') {  
+            steps {
+                    sh 'pm2 restart all'  
+                  }
+  }
+
+
 }
     post {
         always {

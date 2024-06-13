@@ -14,6 +14,11 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/jenkins", (req, res) => {
+  return res.status(200).json({
+    messsage: "todays changes.",
+  });
+});
 
 // app.post('/github-webhook', (req, res) => {
 //     // console.log("")
