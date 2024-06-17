@@ -58,18 +58,11 @@ pipeline {
                          sh 'pm2 list'
                          sh 'BUILD_ID=dontKillMe pm2 start ecosystem.config.js --env=production'
                          sh 'pm2 list'
-                        //  sh 'pm2 logs'
+                         sh 'pm2 logs'
                 }
             }
         }
     }
-
-        stage('Restart PM2') {  
-            steps {
-                    sh 'pm2 restart all'  
-                  }
-  }
-
 
 }
     post {
