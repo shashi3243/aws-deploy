@@ -31,7 +31,6 @@ pipeline {
                 script {
                     dir('/home/ubuntu/aws-deploy') {
                         // Pull the latest code from the repository
-                        sh 'git remote -v'
                         sh 'git checkout .'
                         sh 'git pull origin master'
                     }
@@ -43,10 +42,10 @@ pipeline {
                 script {
                     dir('/home/ubuntu/aws-deploy') {
                         // Install npm dependencies
-                        sh 'rm -rf /var/lib/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NODEJS/lib/node_modules/pm2'
-                        sh 'rm -rf node_modules'
+                        // sh 'rm -rf /var/lib/jenkins/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/NODEJS/lib/node_modules/pm2'
+                        // sh 'rm -rf node_modules'
                         sh 'npm install'
-                        sh 'npm i -g pm2'
+                        // sh 'npm i -g pm2'
                     }
                 }
             }
