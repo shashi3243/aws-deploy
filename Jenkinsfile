@@ -5,6 +5,10 @@ pipeline {
         nodejs 'NODEJS'  // Use the name you configured in Jenkins
     }
 
+    environment {
+        PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"  // Add Node.js bin directory to PATH
+    }
+
     stages {
         stage('Preparation') {
             steps {
@@ -40,7 +44,7 @@ pipeline {
                     dir('/home/ubuntu/aws-deploy') {
                         // Install npm dependencies
                         sh 'npm install'
-                        // sh 'npm i -g pm2'
+                        sh 'npm i -g pm2'
                     }
                 }
             }
@@ -50,9 +54,8 @@ pipeline {
                 script {
                     dir('/home/ubuntu/aws-deploy') {
                         // Set JENKINS_NODE_COOKIE to avoid process termination
-                         sh 'BUILD_ID=dontKillMe pm2 start ecosystem.config.js --env=production'
+                         sh 'BUILD_ID=dontKillMe pm2 start ecosystem.config.js'
                          sh 'pm2 list'
-                         sh 'pm2 logs'
                 }
             }
         }
