@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"  // Add Node.js bin directory to PATH
+         PATH = "${tool 'NODEJS'}/bin:${env.PATH}" // Add Node.js bin directory to PATH
     }
 
     stages {
@@ -43,6 +43,7 @@ pipeline {
                 script {
                     dir('/home/ubuntu/aws-deploy') {
                         // Install npm dependencies
+                        sh 'rm -rf node_modules'
                         sh 'npm install'
                         sh 'npm i -g pm2'
                     }
