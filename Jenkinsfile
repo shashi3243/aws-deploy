@@ -55,9 +55,10 @@ pipeline {
                 script {
                     dir('/home/ubuntu/aws-deploy') {
                         // Set JENKINS_NODE_COOKIE to avoid process termination
+                         sh 'pm2 list'
                          sh 'BUILD_ID=dontKillMe pm2 start ecosystem.config.js --env=production'
                          sh 'pm2 list'
-                         sh 'pm2 logs'
+                        //  sh 'pm2 logs'
                 }
             }
         }
