@@ -40,7 +40,7 @@ pipeline {
                     dir('/home/ubuntu/aws-deploy') {
                         // Install npm dependencies
                         sh 'npm install'
-                        sh 'npm i -g pm2'
+                        // sh 'npm i -g pm2'
                     }
                 }
             }
