@@ -5,10 +5,6 @@ pipeline {
         nodejs 'NODEJS'  // Use the name you configured in Jenkins
     }
 
-    environment {
-        PATH = "${tool 'NODEJS'}/bin:${env.PATH}"  // Add Node.js bin directory to PATH
-    }
-
     stages {
         stage('Preparation') {
             steps {
