@@ -16,10 +16,10 @@ pipeline {
                 sh 'printenv'
             }
         }
-        stage('Go to /var/www/html/aws-deploy Directory') {
+        stage('Go to /home/ubuntu/aws-deploy Directory') {
             steps {
                 script {
-                    dir('/var/www/html/aws-deploy') {
+                    dir('/home/ubuntu/aws-deploy') {
                         // Ensure we are in the correct directory
                         sh 'pwd'
                     }
@@ -29,7 +29,7 @@ pipeline {
         stage('Pull Repository') {
             steps {
                 script {
-                    dir('/var/www/html/aws-deploy') {
+                    dir('/home/ubuntu/aws-deploy') {
                         // Pull the latest code from the repository
                         sh 'git remote -v'
                         sh 'git checkout .'
@@ -41,7 +41,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 script {
-                    dir('/var/www/html/aws-deploy') {
+                    dir('/home/ubuntu/aws-deploy') {
                         // Install npm dependencies
                         sh 'npm install'
                         sh 'npm i -g pm2'
@@ -52,7 +52,7 @@ pipeline {
         stage('start Application') {
             steps {
                 script {
-                    dir('/var/www/html/aws-deploy') {
+                    dir('/home/ubuntu/aws-deploy') {
                         // Set JENKINS_NODE_COOKIE to avoid process termination
                          sh 'BUILD_ID=dontKillMe PM2 start mywebsite.config.js'
                          sh 'pm2 list'
