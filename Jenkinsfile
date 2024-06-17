@@ -58,6 +58,7 @@ pipeline {
                         // Set JENKINS_NODE_COOKIE to avoid process termination
                          sh 'BUILD_ID=dontKillMe pm2 start ecosystem.config.js'
                          sh 'pm2 list'
+                         sh 'pm2 logs'
                 }
             }
         }
